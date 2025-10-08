@@ -1,20 +1,34 @@
 body {
   font-family: "Ubuntu", sans-serif;
   margin: 0;
+  font-size: 1.124rem;
+  font-weight: 300;
+}
+
+img {
+  max-width: 100%;
+  display: block; /*  img are usually display inline */
 }
 
 /* Typography */
 
 h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
   font-family: "Lora", serif;
   font-weight: 400;
-  font-size: 2rem;
   color: #143774;
-  margin: 0;
+  margin-top: 0;
 }
 
 .subtitle {
   font-size: 1rem;
+  font-weight: 700;
 
   border: 1px solid pink;
 
@@ -23,11 +37,59 @@ h1 {
   color: #1792d2;
 }
 
+.article-title {
+  font-size: 1.5rem;
+}
+
+.read-more {
+  text-transform: uppercase;
+  color: #1792d2;
+  text-decoration: none;
+}
+
+.article-info {
+  font-weight: 300;
+}
+
+.widget-title {
+  font-weight: 700;
+}
+
+.read-more,
+.article-info {
+  font-size: 0.875rem;
+}
+
+.article-info {
+  margin: 2em 0;
+}
+
+.read-more:hover,
+.read-more:focus {
+  color: #143774;
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold; /* bolder goes 1 step bold and bold will go to the boldest */
+}
+
+a {
+  color: #1792d2;
+}
+
+a:hover,
+a:focus {
+  color: #143774;
+}
+
 /* Layout */
 
 header {
   background: #f8f8f8;
   padding: 2em 0;
+  text-align: center;
+  margin-bottom: 3em;
 }
 
 .container {
@@ -37,13 +99,33 @@ header {
   margin: 0 auto;
 }
 
-.container-nav {
+.container-flex {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 nav li {
-  margin-left: 2em;
+  margin: 0 1em;
+}
+
+@media (min-width: 675px) {
+  .container-flex {
+    flex-direction: row;
+  }
+
+  main {
+    width: 75%;
+  }
+
+  aside {
+    width: 20%;
+  }
+
+  nav li {
+    margin-left: 2em;
+    margin-right: 0;
+  }
 }
 
 nav a {
@@ -51,13 +133,15 @@ nav a {
   text-decoration: none;
   color: #707070;
   font-weight: 700;
-  padding: 0.25em 0;
+  border: 1px solid blue;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  border: 1px solid pink;
+  justify-content: center;
+  border: 1px solid purple;
+  padding: 0;
 }
 
 nav a:hover,
@@ -66,19 +150,78 @@ nav a:focus {
 }
 
 @media (max-width: 675px) {
-  .container-nav {
-    flex-direction: column;
-  }
-
-  header {
-    text-align: center;
-  }
-
   nav ul {
     flex-direction: column;
   }
 
   nav li {
     margin: 0.5em 0;
+  }
+}
+
+/* Article */
+.article-featured {
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #707070;
+}
+
+.article-recent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.article-recent-main {
+  order: 2;
+}
+
+.article-recent-secondary {
+  order: 1;
+}
+
+@media (min-width: 500px) {
+  .article-recent-main {
+    margin-top: -2.5em;
+  }
+
+  .article-info {
+    text-align: right;
+  }
+}
+
+@media (min-width: 675px) {
+  .article-recent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .article-recent-main {
+    margin-top: 0;
+    width: 65%;
+  }
+
+  .article-recent-secondary {
+    width: 30%;
+  }
+
+  .article-info {
+    text-align: left;
+    order: -1;
+  }
+
+  .article-featured {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-image {
+    order: -2;
+  }
+
+  .article-image {
+    width: 100%;
+    min-height: 250px;
+    object-fit: cover;
   }
 }
